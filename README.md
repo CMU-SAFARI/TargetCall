@@ -22,7 +22,7 @@ $ source venv3/bin/activate
 
 ```bash
 $ cd src
-$ python targetcall.py ../sample_data/fast5/ ../sample_data/Monkeypox_virus.fasta TINYX011 ../sample_data/outputs/
+$ python targetcall.py ../sample_data/fast5/ ../sample_data/Monkeypox_virus.fasta TINYX011 ../sample_data/
 ```
 
 ## Provided Models
