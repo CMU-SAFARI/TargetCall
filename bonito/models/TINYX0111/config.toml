@@ -1,0 +1,173 @@
+[[block]]
+filters = 344
+repeat = 1
+kernel = [ 9,]
+stride = [ 3,]
+dilation = [ 1,]
+dropout = 0.05
+residual = false
+separable = false
+
+[[block]]
+filters = 424
+repeat = 2
+kernel = [ 115,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.05
+residual = true
+separable = true
+
+[[block]]
+filters = 464
+repeat = 7
+kernel = [ 5,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.05
+residual = true
+separable = true
+
+[[block]]
+filters = 456
+repeat = 4
+kernel = [ 123,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.05
+residual = true
+separable = true
+
+[[block]]
+filters = 440
+repeat = 9
+kernel = [ 9,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.05
+residual = true
+separable = true
+
+[[block]]
+filters = 280
+repeat = 6
+kernel = [ 31,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.05
+residual = true
+separable = true
+
+[[block]]
+filters = 384
+repeat = 1
+kernel = [ 67,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.05
+residual = false
+separable = true
+
+[[block]]
+filters = 48
+repeat = 1
+kernel = [ 15,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.05
+residual = false
+separable = false
+
+[modelfinaltinynoskipx0111]
+package = "bonito.ctc"
+
+[modelb1b2]
+package = "bonito.ctc"
+
+[modelb1]
+package = "bonito.ctc"
+
+[modelb1x2]
+package = "bonito.ctc"
+
+[modelfinaltinynoskipx011]
+package = "bonito.ctc"
+
+[modelfinaltinynoskipx4]
+package = "bonito.ctc"
+
+[modelfinaltinynoskipx01]
+package = "bonito.ctc"
+
+[modelfinaltinynoskipx2]
+package = "bonito.ctc"
+
+[modelfinaltinynoskipx3]
+package = "bonito.ctc"
+
+[modelfinaltinynoskipx1]
+package = "bonito.ctc"
+
+[rubinoskip20]
+package = "bonito.ctc"
+
+[modelfinaltinynoskip]
+package = "bonito.ctc"
+
+[model]
+package = "bonito.ctc"
+
+[modelstaticquant]
+package = "bonito.ctc"
+
+[modelfinalsmallquant]
+package = "bonito.ctc"
+
+[modelfinalsmallquantpower2]
+package = "bonito.ctc"
+
+[modelfinalsmallkd]
+package = "bonito.ctc"
+
+[modelfinalsmallkdquant]
+package = "bonito.ctc"
+
+[modelfinalsmall]
+package = "bonito.ctc"
+
+[modelfinalbig]
+package = "bonito.ctc"
+
+[modelfinalsmallnoskip]
+package = "bonito.ctc"
+
+[modelfinalsmallnoskipquant]
+package = "bonito.ctc"
+
+[modelfinalsmallnoskipquantpower2]
+package = "bonito.ctc"
+
+[modelfinalbignoskip]
+package = "bonito.ctc"
+
+[mutatemodel]
+package = "bonito.ctc"
+
+[basemodel]
+package = "bonito.ctc"
+
+[basemodelquant]
+package = "bonito.ctc"
+
+[multimodel]
+package = "bonito.ctc"
+
+[labels]
+labels = [ "N", "A", "C", "G", "T",]
+
+[input]
+features = 1
+
+[encoder]
+activation = "relu"
+
