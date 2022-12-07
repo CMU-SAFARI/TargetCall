@@ -10,12 +10,12 @@ TargetCall requires minimap2 to be installed. Minimap2 can be installed via [Min
 
 ```bash
 $ git clone https://github.com/CMU-SAFARI/TargetCall
-$ cd bonito
-$ python3 -m venv venv3
-$ source venv3/bin/activate
-(venv3) $ pip install --upgrade pip
-(venv3) $ pip install -r requirements.txt
-(venv3) $ python setup.py develop
+$ cd TargetCall
+$ conda create --name targetcall python=3.8.10
+$ conda activate targetcall
+(targetcall) $ pip install --upgrade pip
+(targetcall) $ pip install -r requirements.txt
+(targetcall) $ python setup.py develop
 ```
 
 ## Usage
