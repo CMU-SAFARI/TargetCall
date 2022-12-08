@@ -7,6 +7,7 @@ TargetCall is the first pre-basecalling filter that is applicable to a wide rang
 TargetCall requires minimap2 to be installed. Minimap2 can be installed via [Minimap2 (v2.24)](https://github.com/lh3/minimap2/releases/tag/v2.24)
 
 ## Installation
+TargetCall is tested on Linux with conda version 4.7.12.
 
 ```bash
 $ git clone https://github.com/CMU-SAFARI/TargetCall
@@ -24,6 +25,12 @@ $ conda activate targetcall
 $ cd src
 $ python targetcall.py ../sample_data/fast5/ ../sample_data/Monkeypox_virus.fasta TINYX011 ../sample_data/
 ```
+This will create three output files under ../sample_data/
+- output.fasta: contains noisy basecalled reads of fast5 files using model TINYX011
+- output.sam: contains alignment of noisy reads to Monkeypox_virus reference.
+- readids.txt: the read IDs of reads that are accepted by the filter.
+
+Read IDs can be used as an input to Bonito for basecalling only the reads that are accepted by the filter using the --read-ids option.
 
 ## Provided Models
 
