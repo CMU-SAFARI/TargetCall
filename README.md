@@ -49,3 +49,25 @@ You can find all models listed under bonito/models/.
 
 We explain how to reproduce the results we show in the TargetCall paper in the [test directory](./test/).
 
+# <a name="cite"></a>Citing TargetCall
+
+ TargetCall is described and evaluated in the following paper. If you find the repository and the code useful, please cite:
+
+> Meryem Banu Cavlak, Gagandeep Singh, Mohammed Alser, Can Firtina, Joël Lindegger, 
+> Mohammad Sadrosadati, Nika Mansouri Ghiasi, Can Alkan, and Onur Mutlu,
+> "TargetCall: Eliminating the Wasted Computation in Basecalling via Pre-Basecalling Filtering,"
+> *arXiv* (2022). [DOI](https://doi.org/10.48550/arXiv.2212.04953)
+
+
+BIB:
+
+```bibtex
+@article{cavlak_targetcall_2022,
+  title = {{TargetCall: Eliminating the Wasted Computation in Basecalling via Pre-Basecalling Filtering}},
+  url = {https://doi.org/10.48550/arXiv.2212.04953},
+  journal = {arXiv},
+  author = {Cavlak, Meryem Banu and Singh, Gagandeep and Alser, Mohammed and Firtina, Can and Lindegger, Joël and Sadrosadati, Mohammad and Ghiasi, Nika Mansouri and Alkan, Can and Mutlu, Onur},
+  year = {2022},
+  month = dec,
+}
+```
