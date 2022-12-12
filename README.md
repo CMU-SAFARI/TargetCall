@@ -55,7 +55,7 @@ We explain how to reproduce the results we show in the TargetCall paper in the [
 
 > Meryem Banu Cavlak, Gagandeep Singh, Mohammed Alser, Can Firtina, Joël Lindegger, 
 > Mohammad Sadrosadati, Nika Mansouri Ghiasi, Can Alkan, and Onur Mutlu,
-> "TargetCall: Eliminating the Wasted Computation in Basecalling via Pre-Basecalling Filtering,"
+> ["TargetCall: Eliminating the Wasted Computation in Basecalling via Pre-Basecalling Filtering,"](https://arxiv.org/abs/2212.04953)
 > *arXiv* (2022). [DOI](https://doi.org/10.48550/arXiv.2212.04953)
 
 
