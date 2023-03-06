@@ -30,8 +30,9 @@ class ModelTinyNoSkipX011(Module):
         self.decoder = Decoder(48, len(self.alphabet))
 
     def forward(self, x):
-        encoded = self.encoder(x)
-        return self.decoder(encoded)
+        with torch.cuda.amp.autocast():
+            encoded = self.encoder(x)
+            return self.decoder(encoded)
 
     def decode(self, x, beamsize=5, threshold=1e-3, qscores=False, return_path=False):
         x = x.exp().cpu().numpy().astype(np.float32)
