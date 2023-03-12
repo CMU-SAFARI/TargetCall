@@ -7,7 +7,7 @@ ref_path = sys.argv[3]
 index_dir = sys.argv[4]
 sigmap_exe_path = sys.argv[5]
 
-options = " -p /mnt/batty/bcavlak/bio/dwb/sigmap/extern/kmer_models/r9.4_180mv_450bps_6mer/template_median68pA.model "
+options = " -p /mnt/batty/bcavlak/bio/tools/sigmap/extern/kmer_models/r9.4_180mv_450bps_6mer/template_median68pA.model -t 128 "
 
 dir_list = os.listdir(fast5_dir_path)
 

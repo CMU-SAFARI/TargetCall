@@ -9,12 +9,12 @@ model_name = 'uncalled'
 # Python Script Paths
 exedir = "../run_scripts/" # the path to HierarchyCall's test/run_scripts dir  
 uncalled_script_path = "run_uncalled.py "
-filtered_bonito_script_path = exedir + "run_bonito_params.py "
 extract_read_ids_path = exedir + "run_extract_filtered.py "
 
 # Reference Genome Paths
 covid_index_path = datadir + "refs/uncalled_indices/covid"
 combined_viral_index_path = datadir + "refs/uncalled_indices/combined_viral"
+chm13_index_path = datadir + "refs/uncalled_indices/human_chm13"
 
 # File Paths
 fast5_path = datadir + "fast5/"
@@ -29,7 +29,7 @@ filtered_fastq_dir_path = datadir + '/covid/' + model_name + '/filtered-fastq/'
 os.system("mkdir -p " + filtered_fastq_dir_path)
 
 # RUN UNCALLED
-# OPT1: fast5_dir_path, OPT2: output_dir_path, OPT3: ref_path, OPT4: index_dir, OPT5: sigmap_exe_path 
+# OPT1: fast5_dir_path, OPT2: output_dir_path, OPT3: index_dir, OPT4: uncalled_exe_path 
 start_time = time.time()
 os.system("python " + uncalled_script_path + human_fast5_path + " " + sam_dir_path + "human_" + ' ' + covid_index_path + ' ' + uncalled_exe)
 end_time = time.time()
@@ -59,8 +59,8 @@ os.system("mkdir -p " + readids_dir_path)
 filtered_fastq_dir_path = datadir + '/viral/' + model_name + '/filtered-fastq/'
 os.system("mkdir -p " + filtered_fastq_dir_path)
 
-# RUN BaseConv
-# OPT1: read_dir_path, OPT2: output_dir_path, OPT3: model_name
+# RUN UNCALLED
+# OPT1: fast5_dir_path, OPT2: output_dir_path, OPT3: index_dir, OPT4: uncalled_exe_path 
 start_time = time.time()
 os.system("python " + uncalled_script_path + metagenomics_bacteria_fast5_path + " " + sam_dir_path + "bacteria_" + ' ' + combined_viral_index_path + ' ' + uncalled_exe)
 end_time = time.time()
@@ -76,3 +76,33 @@ start_time = time.time()
 os.system("python " + extract_read_ids_path + sam_dir_path + " " + readids_dir_path + " viral")
 end_time = time.time()
 print("VIRAL dataset extract read ids execution time: %s seconds " % (end_time - start_time))
+
+# File Paths
+fast5_path = datadir + "fast5/"
+human_fast5_path = datadir + "fast5/human/"
+sepsis_fast5_path = datadir + "fast5/sepsis-bacteria/"
+
+sam_dir_path = datadir + '/sepsis-chm13/' + model_name + '/sam/'
+os.system("mkdir -p " + sam_dir_path)
+readids_dir_path = datadir + '/sepsis-chm13/' + model_name + '/readids/'
+os.system("mkdir -p " + readids_dir_path)
+filtered_fastq_dir_path = datadir + '/sepsis-chm13/' + model_name + '/filtered-fastq/'
+os.system("mkdir -p " + filtered_fastq_dir_path)
+
+# RUN UNCALLED
+# OPT1: fast5_dir_path, OPT2: output_dir_path, OPT3: index_dir, OPT4: uncalled_exe_path 
+start_time = time.time()
+os.system("python " + uncalled_script_path + human_fast5_path + " " + sam_dir_path + "human_" + ' ' + chm13_index_path + ' ' + uncalled_exe)
+end_time = time.time()
+print("SEPSIS-chm13 Human UNCALLED execution time: %s seconds " % (end_time - start_time))
+
+start_time = time.time()
+os.system("python " + uncalled_script_path + sepsis_fast5_path + " " + sam_dir_path + "bacteria_" + ' ' + chm13_index_path + ' ' + uncalled_exe)
+end_time = time.time()
+print("SEPSIS-chm13 sepsis UNCALLED execution time: %s seconds " % (end_time - start_time))
+
+# RUN extract filtered reads 
+start_time = time.time()
+os.system("python " + extract_read_ids_path + sam_dir_path + " " + readids_dir_path + " sepsis")
+end_time = time.time()
+print("SEPSIS-chm13 dataset extract read ids execution time: %s seconds " % (end_time - start_time))

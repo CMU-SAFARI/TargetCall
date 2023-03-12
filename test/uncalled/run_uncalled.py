@@ -11,7 +11,6 @@ dir_list = os.listdir(fast5_dir_path)
 # IMPORTANT NOTE: always run this script after the command:
 # conda activate uncalled
 for dir in dir_list:
-    # /home/bcavlak/.local/bin/uncalled
     outdir = " > " + output_dir_path + dir + ".paf "
-    print("\n" + uncalled_exe + " map -t 8 " + index_dir + " " + fast5_dir_path + dir + outdir)
-    os.system(uncalled_exe + " map -t 8 " + index_dir + " " + fast5_dir_path + dir + outdir)
+    print("\n" + uncalled_exe + " map -t 128 " + index_dir + " " + fast5_dir_path + dir + outdir)
+    os.system(uncalled_exe + " map -t 128 " + index_dir + " " + fast5_dir_path + dir + outdir)
