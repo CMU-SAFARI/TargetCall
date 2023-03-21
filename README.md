@@ -19,6 +19,8 @@ $ conda activate targetcall
 (targetcall) $ python setup.py develop
 ```
 
+You may need to use requirements-cuda111.txt or requirements-cuda113.txt depending on your cuda version.
+
 ## Usage
 
 ```bash
