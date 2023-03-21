@@ -36,7 +36,9 @@ def compute_scores(model, batch):
     with torch.no_grad():
         device = next(model.parameters()).device
         chunks = batch.to(torch.half).to(device)
-        probs = permute(model(chunks), 'TNC', 'NTC')
+        with torch.cuda.amp.autocast():
+            probs = permute(model(chunks), 'TNC', 'NTC')
+
     return probs.cpu().to(torch.float32)
 
 
