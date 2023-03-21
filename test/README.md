@@ -61,23 +61,36 @@ We compare TargetCall with two state-of-the-art targeted sequencing methods, UNC
 
 ### UNCALLED
 
-Here we run UNCALLED on datasets of two use cases. We need to run two scripts to get results for UNCALLED since we created two virtual environments when performing our evaluations. The first script should be run within the environment UNCALLED is installed. The second, should be run within the environment TargetCall is installed. $uncalled_exe should be the absolute path to the UNCALLED executable.
+Here we run UNCALLED on datasets of three use cases (except sepsis use case for reference genome hg38). We need to run two scripts to get results for UNCALLED since we created two virtual environments when performing our evaluations. The first script should be run within the environment UNCALLED is installed. The second, should be run within the environment TargetCall is installed. $uncalled_exe should be the absolute path to the UNCALLED executable.
 
 ```bash
 (targetcall) $ cd uncalled 
-(UNCALLED) $ python compare_uncalled.py $datadir $uncalled_exe &> ../data/TargetCall/outputs/uncalled_1.out
-(targetcall) $ python compare_uncalled2.py $datadir &> ../data/TargetCall/outputs/uncalled_2.out
-(targetcall) $ cat ../data/TargetCall/outputs/uncalled_1.out ../data/TargetCall/outputs/uncalled_2.out > ../data/TargetCall/outputs/uncalled.out
+(UNCALLED) $ python compare_uncalled.py $datadir $uncalled_exe &> ../data/TargetCall/outputs/uncalled.out
+(targetcall) $ python uncalled_basecall.py $datadir &> ../data/TargetCall/outputs/uncalled_basecall.out.out
 (targetcall) $ cd ..
 ```
 
 ### Sigmap
 
-Here we run Sigmap on datasets of two use cases. $sigmap_exe should be the absolute path to the sigmap executable.
+Here we run Sigmap on datasets of three use cases on all four reference genomes. $sigmap_exe should be the absolute path to the sigmap executable. We have a seperate script for each use case. For collecting execution time numbers, we exclude the time to load reads for sigmap since this part is not pipelined for the rest of the code to simulate real time analysis.
 
 ```bash
 (targetcall) $ cd sigmap 
-(targetcall) $ python compare_sigmap.py $datadir $sigmap_exe &> ../data/TargetCall/outputs/sigmap.out
+(targetcall) $ python covid.py $datadir $sigmap_exe &> ../data/TargetCall/outputs/sigmap_covid.out
+(targetcall) $ python viral.py $datadir $sigmap_exe &> ../data/TargetCall/outputs/sigmap_viral.out
+(targetcall) $ python sepsis_chm13.py $datadir $sigmap_exe &> ../data/TargetCall/outputs/sigmap_sepsis_chm13.out
+(targetcall) $ python sepsis_hg38.py $datadir $sigmap_exe &> ../data/TargetCall/outputs/sigmap_sepsis_hg38.out
+(targetcall) $ python basecall.py $datadir &> ../data/TargetCall/outputs/sigmap_basecall.out
+(targetcall) $ cd ..
+```
+
+### TargetCall
+
+Here we run TargetCall with the best filter selected on all four target references. You may need to delete the old files before running the following command.
+
+```bash
+(targetcall) $ cd targetcall
+(targetcall) $ python reproduce.py TINYX011 $datadir &> ../data/TargetCall/outputs/TINYX011.out
 (targetcall) $ cd ..
 ```
 
@@ -128,4 +141,10 @@ $ cd ..
 
 ### Comparison Against UNCALLED and Sigmap
 
-To get comparison numbers of TargetCall against UNCALLED and Sigmap, you need to run the scripts from Basecalling Execution Time and Filtering Accuracy sections with model list [TINYX011, uncalled, sigmap].
+To get comparison numbers of TargetCall against UNCALLED and Sigmap, you need to run the scripts from Filtering Accuracy sections with model list [TINYX011, uncalled, sigmap]. For collecting performance numbers to compare TargetCall against UNCALLED and Sigmap, you need the following commands.
+
+```bash
+$ cd analysis
+$ cd python prior_performance.py ../data/TargetCall/outputs/
+$ cd ..
+```
